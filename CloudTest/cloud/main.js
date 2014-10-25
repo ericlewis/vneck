@@ -44,7 +44,7 @@ Parse.Cloud.define("addCardToCustomer", function(request, response) {
           method:"POST",
           //STRIPE_SECRET_KEY will be your stripe secret key obviously, this is different from the public key that you will use in your iOS/Android side.
           // STRIPE_API_BASE_URL = 'api.stripe.com/v1'
-          url: "https://" + 'stripeToken' + ':@' + 'api.stripe.com/v1' + "/customers/" + request.params.customerId + "/cards",
+          url: "https://" + stripeToken + ':@' + 'api.stripe.com/v1' + "/customers/" + request.params.customerId + "/cards",
           body: "card="+request.params["tokenId"]
       }).then(function() {
       // And we're done!
