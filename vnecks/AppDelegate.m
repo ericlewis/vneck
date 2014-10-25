@@ -13,7 +13,6 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "Stripe.h"
 #import "Appirater.h"
-#import "Helpshift.h"
 
 @interface AppDelegate ()
 
@@ -54,11 +53,6 @@
     [Appirater appLaunched:YES];
     
     [PFFacebookUtils initializeFacebook];
-    
-    // Helpshift
-    [Helpshift installForApiKey:@"a495043b89e4c38a1f3abde646dd9030"
-                     domainName:@"vneck.helpshift.com"
-                          appID:@"vneck_platform_20141021221014286-bc0be979e5e2f93"];
     
     [Crashlytics startWithAPIKey:@"aa3ebef69236c7e1ec3eb569123ce003350b80c9"];
 

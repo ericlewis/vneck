@@ -210,7 +210,7 @@ Parse.Cloud.define("purchaseShirt", function(request, response) {
           body: 'type=dtg' +
               '&products[0][id]=canvas-v-neck-t-shirt' +
               "&products[0][color]=" + request.params.color + 
-              "&products[0][quantity]=" + request.params.quantity +
+              "&products[0][quantity]=1" + //request.params.quantity +
               "&products[0][size]=" + size +
               "&address[name]="  + request.params.name +
               "&address[address1]=" + request.params.address1 +

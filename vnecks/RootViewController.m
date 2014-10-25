@@ -27,6 +27,8 @@
 #import "PKPayment+STPTestKeys.h"
 #endif
 
+#define MERCHANT_ID @"merchant.com.eel.vneck"
+
 @interface RootViewController ()<PKPaymentAuthorizationViewControllerDelegate>
 @property (readonly, strong, nonatomic) ModelController *modelController;
 @property (strong, nonatomic) NSArray *pickerData;
@@ -163,18 +165,29 @@
 }
 
 - (void)setApplePayEnabled{
-    PFUser *currentUser = [PFUser currentUser];
-    
-    PKPaymentRequest *paymentRequest = [Stripe
-                                        paymentRequestWithMerchantIdentifier:@""
-                                        amount:0
-                                        currency:@"USD"
-                                        description:nil];
-    if (currentUser && [Stripe canSubmitPaymentRequest:paymentRequest]) {
-        self.applePayAllowed = YES;
-    }else{
+    if ([NSProcessInfo instancesRespondToSelector:@selector(isOperatingSystemAtLeastVersion:)]){
+        NSOperatingSystemVersion ios8_1_0 = (NSOperatingSystemVersion){8, 1, 0};
+        if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios8_1_0]) {
+            PFUser *currentUser = [PFUser currentUser];
+            
+            PKPaymentRequest *paymentRequest = [Stripe
+                                                paymentRequestWithMerchantIdentifier:MERCHANT_ID
+                                                amount:0
+                                                currency:@"USD"
+                                                description:nil];
+            if (currentUser && [Stripe canSubmitPaymentRequest:paymentRequest]) {
+                self.applePayAllowed = YES;
+            }else{
+                self.applePayAllowed = NO;
+            }
+        }else{
+            self.applePayAllowed = NO;
+        }
+    } else {
+        // we're on iOS 7 or below
         self.applePayAllowed = NO;
     }
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -199,7 +212,7 @@
                                  self.numberOfShirtsString = numberOfShirts[buttonIndex];
                                  
                                  PKPaymentRequest *paymentRequest = [Stripe
-                                                                     paymentRequestWithMerchantIdentifier:@""
+                                                                     paymentRequestWithMerchantIdentifier:MERCHANT_ID
                                                                      amount:[NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%li", [self.numberOfShirtsString integerValue] * 20]]
                                                                      currency:@"USD"
                                                                      description:[NSString stringWithFormat:@"%@ %@ vneck shirt(s)", self.numberOfShirtsString, self.shirtColor]];
