@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "vneck"
+        }, 
+        "vneck": {
+            "applicationId": "q35h3MSpJWR3IyvPqEXhVT2269fid5OzWczwtkmc", 
+            "masterKey": "zDOXJCT8LJ2NB7zVVkJI0hPINfI9DiHb1RTw0y6L"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.1"
+    }
+}

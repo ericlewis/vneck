@@ -1,0 +1,69 @@
+PODS:
+  - ActionSheetPicker-3.0 (1.2.0)
+  - Appirater (2.0.4)
+  - ApplePayStubs (0.1.1)
+  - Bolts (1.1.3)
+  - ChuzzleKit (1.0.6)
+  - Facebook-iOS-SDK (3.19.0):
+    - Bolts (~> 1.0)
+  - Helpshift (4.9.1)
+  - MBProgressHUD (0.9)
+  - NSDate+TimeAgo (1.0.3)
+  - Parse (1.4.2):
+    - Bolts (~> 1.1.3)
+  - ParseFacebookUtils (1.4.2):
+    - Facebook-iOS-SDK (~> 3.19.0)
+    - Parse (~> 1.4.2)
+  - PaymentKit (1.1.1)
+  - SCLAlertView-Objective-C (0.2.4)
+  - SpinKit (1.2.0)
+  - SSDataSources (HEAD based on 0.7.3)
+  - Stripe (2.2.0):
+    - Stripe/Core
+  - Stripe/ApplePay (2.2.0):
+    - Stripe/Core
+  - Stripe/Core (2.2.0)
+  - UIActionSheet+Blocks (0.8.1)
+  - VTAcknowledgementsViewController (0.12)
+
+DEPENDENCIES:
+  - ActionSheetPicker-3.0
+  - Appirater
+  - ApplePayStubs
+  - ChuzzleKit
+  - Facebook-iOS-SDK
+  - Helpshift
+  - MBProgressHUD
+  - NSDate+TimeAgo
+  - Parse
+  - ParseFacebookUtils
+  - PaymentKit
+  - SCLAlertView-Objective-C
+  - SpinKit
+  - SSDataSources (HEAD)
+  - Stripe
+  - Stripe/ApplePay
+  - UIActionSheet+Blocks
+  - VTAcknowledgementsViewController
+
+SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: e261c5b5cf47e4b4efa8cb3d186be30d4b145b76
+  Appirater: cbdb7f305562cfde585300bfff86da01ae559deb
+  ApplePayStubs: 1caccd2bade14b67a221d6db95bea1a2f395f398
+  Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
+  ChuzzleKit: baeaabc3f09edbc56bbf776993afe7953286116f
+  Facebook-iOS-SDK: cb7d74759d0b1ba546e6e6f1dde407b0d4e448d6
+  Helpshift: a2cc5a7d4a56678decd1ab911eb710a927952eac
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  NSDate+TimeAgo: f3533e0198fab05b716368b19f8c2185d53d6f3b
+  Parse: fc9ceb6edbc6bb6a1a1f3c33f0db3293a6894f94
+  ParseFacebookUtils: 15b04623e6bf4bbea5d60460caff98943ad7351e
+  PaymentKit: f77b4d5cee45947949429c3d587e8eb160a3c9e2
+  SCLAlertView-Objective-C: 7642a61a82d6960887b7d81536d0c043bba430b8
+  SpinKit: 11fa465172473ce3d59a80bf0449020b850e5229
+  SSDataSources: 03687c54e8b215add71306556ee8cef0a5960b69
+  Stripe: 935d0ff491100ca1ba0f4040c64e449c5ed69f6d
+  UIActionSheet+Blocks: c8b9c02f3d08964e8f7a4202f004a639c15eab80
+  VTAcknowledgementsViewController: 5cdab8f3d003680b8fbdfcce90fcab92cee962a6
+
+COCOAPODS: 0.33.1
