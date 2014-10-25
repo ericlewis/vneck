@@ -31,7 +31,7 @@
     [[UIApplication sharedApplication] keyWindow].tintColor = [UIColor whiteColor];
     
     // setup stripe
-    [Stripe setDefaultPublishableKey:@"pk_test_Lnvq1s9p2H5K7cjnEUiChHtq"];
+    [Stripe setDefaultPublishableKey:@"pk_live_be5iKwsPB6mQRxKrNRK81Iyp"];
     
     // parse stuff
     [Parse setApplicationId:@"q35h3MSpJWR3IyvPqEXhVT2269fid5OzWczwtkmc"
@@ -39,7 +39,7 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     // rating stuff
-    [Appirater setAppId:@"511158309"];
+    [Appirater setAppId:@"931893685"];
     [Appirater setUsesUntilPrompt:3];
     [Appirater setSignificantEventsUntilPrompt:-1];
     [Appirater setTimeBeforeReminding:1];

@@ -1,8 +1,10 @@
 require('cloud/app.js');
 
 /* Initialize the Stripe and Mailgun and Shirts.io Cloud Modules */
+var stripeToken = 'sk_live_BbliHBo8wZh3RVZtki00r9ia'
+
 var Stripe = require('stripe');
-Stripe.initialize('sk_test_wZV5d5xnuHO6CPNqdfSxTRfR');
+Stripe.initialize(stripeToken);
 
 var Mailgun = require('mailgun');
 Mailgun.initialize("sandbox7977b1ecfb534d6a8d560f5a09e7e67e.mailgun.org", "key-406c3a14ebaad20a11c58e815b170a45");
@@ -42,7 +44,7 @@ Parse.Cloud.define("addCardToCustomer", function(request, response) {
           method:"POST",
           //STRIPE_SECRET_KEY will be your stripe secret key obviously, this is different from the public key that you will use in your iOS/Android side.
           // STRIPE_API_BASE_URL = 'api.stripe.com/v1'
-          url: "https://" + 'sk_test_wZV5d5xnuHO6CPNqdfSxTRfR' + ':@' + 'api.stripe.com/v1' + "/customers/" + request.params.customerId + "/cards",
+          url: "https://" + 'stripeToken' + ':@' + 'api.stripe.com/v1' + "/customers/" + request.params.customerId + "/cards",
           body: "card="+request.params["tokenId"]
       }).then(function() {
       // And we're done!
@@ -63,7 +65,7 @@ Parse.Cloud.define("removeCardForCustomer", function(request, response) {
           method:"DELETE",
           //STRIPE_SECRET_KEY will be your stripe secret key obviously, this is different from the public key that you will use in your iOS/Android side.
           // STRIPE_API_BASE_URL = 'api.stripe.com/v1'
-          url: "https://" + 'sk_test_wZV5d5xnuHO6CPNqdfSxTRfR' + ':@' + 'api.stripe.com/v1' + "/customers/" + request.params.customerId + "/cards/" + request.params.cardId,
+          url: "https://" + stripeToken + ':@' + 'api.stripe.com/v1' + "/customers/" + request.params.customerId + "/cards/" + request.params.cardId,
       }).then(function() {
       // And we're done!
         response.success('Success');
@@ -83,7 +85,7 @@ Parse.Cloud.define("listCardsForCustomer", function(request, response) {
           method:"GET",
           //STRIPE_SECRET_KEY will be your stripe secret key obviously, this is different from the public key that you will use in your iOS/Android side.
           // STRIPE_API_BASE_URL = 'api.stripe.com/v1'
-          url: "https://" + 'sk_test_wZV5d5xnuHO6CPNqdfSxTRfR' + ':@' + 'api.stripe.com/v1' + "/customers/" + request.params["customerId"] + "/cards"
+          url: "https://" + stripeToken + ':@' + 'api.stripe.com/v1' + "/customers/" + request.params["customerId"] + "/cards"
       }).then(function(cards) {
       // And we're done!
         response.success(cards.data.data);
@@ -210,7 +212,7 @@ Parse.Cloud.define("purchaseShirt", function(request, response) {
           body: 'type=dtg' +
               '&products[0][id]=canvas-v-neck-t-shirt' +
               "&products[0][color]=" + request.params.color + 
-              "&products[0][quantity]=1" + //request.params.quantity +
+              "&products[0][quantity]=" + request.params.quantity +
               "&products[0][size]=" + size +
               "&address[name]="  + request.params.name +
               "&address[address1]=" + request.params.address1 +
