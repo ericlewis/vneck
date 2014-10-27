@@ -415,8 +415,7 @@
                                    };
     
     if (self.applePayAllowed == NO) {
-        [chargeParams addObject:[PFUser currentUser][@"stripeCustomerId"] forkey:@"customer"];
-        [chargeParams addObject:tokenId forkey:@"token"];
+        [chargeParams addObject:tokenId forkey:@"customer"];
     }
     // This passes the token off to our payment backend, which will then actually complete charging the card using your account's
     [PFCloud callFunctionInBackground:@"purchaseShirt" withParameters:chargeParams block:^(id object, NSError *error) {
