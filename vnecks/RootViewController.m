@@ -396,7 +396,7 @@
         tokenId = (NSString*)token;
     }
     
-    NSDictionary *chargeParams = @{
+    NSMutableDictionary *chargeParams = @{
                                    @"token": tokenId,
                                    @"currency": @"usd",
                                    @"objectId" : [[PFUser currentUser] objectId],
@@ -415,24 +415,8 @@
                                    };
     
     if (self.applePayAllowed == NO) {
-        chargeParams = @{
-                      @"customer": [PFUser currentUser][@"stripeCustomerId"],
-                      @"customer": tokenId,
-                      @"currency": @"usd",
-                      @"objectId" : [[PFUser currentUser] objectId],
-                      @"color" : self.shirtColor,
-                      @"size"  : currentUser[@"size"],
-                      @"quantity" : self.numberOfShirtsString,
-                      @"name" : currentUser[@"name"],
-                      @"email": currentUser.email,
-                      @"address1" : currentUser[@"address1"],
-                      @"address2" : currentUser[@"address2"],
-                      @"zipcode" : currentUser[@"zipcode"],
-                      @"city" : currentUser[@"city"],
-                      @"state" : currentUser[@"state"],
-                      @"address1" : currentUser[@"address1"],
-                      @"useApplePay" : self.usingApplePay ? @"true" : @"false"
-                      };
+        [chargeParams addObject:[PFUser currentUser][@"stripeCustomerId"] forkey:@"customer"];
+        [chargeParams addObject:tokenId forkey:@"token"];
     }
     // This passes the token off to our payment backend, which will then actually complete charging the card using your account's
     [PFCloud callFunctionInBackground:@"purchaseShirt" withParameters:chargeParams block:^(id object, NSError *error) {
